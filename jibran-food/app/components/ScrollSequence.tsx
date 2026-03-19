@@ -3,6 +3,7 @@
 import NextImage from "next/image";
 import { motion, useMotionValue, useScroll, useSpring } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { getAssetPath } from "@/app/lib/assetPath";
 
 const TOTAL_FRAMES = 80;
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
@@ -34,9 +35,15 @@ export default function ScrollSequence() {
 
   const drawFrame = useCallback((frameIndex: number) => {
     const canvas = canvasRef.current;
-    const context = canvas?.getContext("2d");
+    const context = canvas?.getContext("2d", { willReadFrequently: false });
     const image = imagesRef.current[frameIndex];
-    if (!canvas || !context || !image || !image.complete) return;
+    if (!canvas || !context || !image) return;
+    
+    // Lazy load frame if not yet loaded
+    if (!image.complete && !image.src) {
+      image.src = getFrameSrc(frameIndex);
+    }
+    if (!image.complete) return;
 
     const rect = canvas.getBoundingClientRect();
     const dpr = window.devicePixelRatio || 1;
@@ -63,32 +70,42 @@ export default function ScrollSequence() {
       drawY = (rect.height - drawHeight) / 2;
     }
 
+    context.filter = 'none';
     context.drawImage(image, drawX, drawY, drawWidth, drawHeight);
   }, []);
 
   useEffect(() => {
     let loaded = 0;
-    const loadedImages: HTMLImageElement[] = [];
+    const loadedImages: (HTMLImageElement | null)[] = new Array(TOTAL_FRAMES).fill(null);
 
-    for (let i = 0; i < TOTAL_FRAMES; i++) {
+    // Preload first 10 frames immediately
+    const preloadCount = Math.min(10, TOTAL_FRAMES);
+    for (let i = 0; i < preloadCount; i++) {
       const frame = new window.Image();
       frame.src = getFrameSrc(i);
       frame.onload = () => {
         loaded += 1;
-        if (loaded === TOTAL_FRAMES) {
+        if (loaded >= preloadCount) {
           setImagesLoaded(true);
         }
       };
       frame.onerror = () => {
         loaded += 1;
-        if (loaded === TOTAL_FRAMES) {
+        if (loaded >= preloadCount) {
           setImagesLoaded(true);
         }
       };
-      loadedImages.push(frame);
+      loadedImages[i] = frame;
     }
 
-    imagesRef.current = loadedImages;
+    // Lazy load remaining frames in background
+    for (let i = preloadCount; i < TOTAL_FRAMES; i++) {
+      const frame = new window.Image();
+      frame.src = getFrameSrc(i);
+      loadedImages[i] = frame;
+    }
+
+    imagesRef.current = loadedImages as HTMLImageElement[];
   }, []);
 
   useEffect(() => {
@@ -154,7 +171,7 @@ export default function ScrollSequence() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <NextImage
-              src='../../public/imageAsset/logo.jpg'
+              src={getAssetPath("/imageAsset/logo.jpg")}
               alt="Jibran Food logo"
               width={180}
               height={72}

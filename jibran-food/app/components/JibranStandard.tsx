@@ -44,19 +44,19 @@ const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.08,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" as const } },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 50, scale: 0.97 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: "easeOut" as const } },
+  hidden: { opacity: 0, y: 40, scale: 0.98 },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.5, ease: "easeOut" as const } },
 };
 
 function CheckIcon() {
@@ -102,19 +102,19 @@ export default function JibranStandard() {
       <div className="mx-auto mb-14 max-w-5xl text-center sm:mb-20">
         <motion.p
           className="tracking-lux mb-4 text-xs font-semibold uppercase text-[#27496d] sm:text-sm"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
         >
           Why We&apos;re Different
         </motion.p>
         <motion.h2
           className="text-4xl leading-[0.92] text-[#13233c] sm:text-5xl md:text-6xl lg:text-7xl"
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.15 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
           The Jibran Standard
         </motion.h2>
@@ -170,7 +170,6 @@ export default function JibranStandard() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ delay: 0.15 }}
         >
           <div className="mb-7">
             <span className="tracking-lux inline-block rounded-full bg-[#8a4b2f]/10 px-4 py-1.5 text-[11px] font-semibold uppercase text-[#8a4b2f]">
@@ -211,7 +210,6 @@ export default function JibranStandard() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ delay: 0.2 }}
         >
           <p className="tracking-lux text-[11px] font-semibold uppercase text-[#d4af37]">
             Quality Promise
@@ -228,7 +226,6 @@ export default function JibranStandard() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ delay: 0.25 }}
         >
           <p className="tracking-lux text-[11px] font-semibold uppercase text-[#27496d]">
             Freshness Window
