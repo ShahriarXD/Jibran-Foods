@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jibran Food Website
 
-## Getting Started
+Luxury minimalist marketing website for Jibran Food, built with Next.js.
 
-First, run the development server:
+## Live Site
+
+GitHub Pages URL:
+
+https://shahriarxd.github.io/Jibran-Foods/
+
+## Download and Run Locally
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/ShahriarXD/Jibran-Foods.git
+cd Jibran-Foods
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Start development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open this in your browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Build for Production
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+The static export is generated in the out folder.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## GitHub Pages Hosting
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This repository is configured for GitHub Pages with:
 
-## Deploy on Vercel
+- Next.js static export settings in [next.config.ts](next.config.ts)
+- GitHub Actions workflow in [.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Deployment steps:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Push your changes to the main branch.
+2. Go to your repository on GitHub.
+3. Open Settings > Pages.
+4. Under Build and deployment, set Source to GitHub Actions.
+5. Wait for the Deploy Next.js site to GitHub Pages workflow to complete.
+
+After deployment, your site will be available at:
+
+https://shahriarxd.github.io/Jibran-Foods/
