@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { getAssetPath } from "@/app/lib/assetPath";
 
 const fadeSlideUp = {
   hidden: { opacity: 0, y: 60 },
@@ -50,7 +51,7 @@ export default function Heritage() {
 
             <div className="relative min-h-70 sm:min-h-85 lg:min-h-full">
               <Image
-                src="/imageAsset/info.jpg"
+                src={getAssetPath("/imageAsset/info.jpg")}
                 alt="Traditional Jibran shemai preparation and ingredients"
                 fill
                 className="object-cover"

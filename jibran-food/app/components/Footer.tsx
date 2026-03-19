@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { getAssetPath } from "@/app/lib/assetPath";
 
 const quickLinks = [
   { label: "Our Story", href: "#heritage" },
@@ -41,7 +42,7 @@ export default function Footer() {
               custom={0}
             >
               <Image
-                src="/imageAsset/logo.jpg"
+                src={getAssetPath("/imageAsset/logo.jpg")}
                 alt="Jibran Food logo"
                 width={150}
                 height={62}
