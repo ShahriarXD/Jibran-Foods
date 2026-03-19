@@ -154,7 +154,7 @@ export default function ScrollSequence() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <NextImage
-              src="/imageAsset/logo.jpg"
+              src="https://shahriarxd.github.io/Jibran-Foods/imageAsset/logo.jpg"
               alt="Jibran Food logo"
               width={180}
               height={72}
@@ -163,7 +163,7 @@ export default function ScrollSequence() {
             />
 
             <p className="tracking-lux text-xs font-semibold uppercase text-[#27496d] sm:text-sm">
-              Scroll Animation Intro
+              Welcome to Jibran Food
             </p>
             <h1 className="mt-2 text-4xl font-semibold leading-[0.92] text-[#13233c] sm:text-5xl lg:text-6xl">
               The Gold Standard
