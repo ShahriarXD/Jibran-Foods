@@ -154,7 +154,7 @@ export default function ScrollSequence() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <NextImage
-              src="https://shahriarxd.github.io/Jibran-Foods/imageAsset/logo.jpg"
+              src='../../public/imageAsset/logo.jpg'
               alt="Jibran Food logo"
               width={180}
               height={72}
