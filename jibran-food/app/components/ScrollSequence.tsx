@@ -5,7 +5,8 @@ import { motion, useMotionValue, useScroll, useSpring } from "framer-motion";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const TOTAL_FRAMES = 80;
-const FRAME_PATH = "/hero-image/Lacchi_Shemai_Dessert_Preparation_Video_";
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const FRAME_PATH = `${BASE_PATH}/hero-image/Lacchi_Shemai_Dessert_Preparation_Video_`;
 
 function getFrameSrc(index: number): string {
   return `${FRAME_PATH}${String(index).padStart(3, "0")}.jpg`;

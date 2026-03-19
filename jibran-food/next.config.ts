@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   basePath: "/Jibran-Foods",
   assetPrefix: "/Jibran-Foods/",
+  env: {
+    NEXT_PUBLIC_BASE_PATH: "/Jibran-Foods",
+  },
 };
 
 export default nextConfig;
