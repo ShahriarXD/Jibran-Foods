@@ -1,0 +1,263 @@
+/* ============================================
+   JIBRAN FOOD — Premium Design System
+   ============================================ */
+
+@import "tailwindcss";
+
+/* ---------- Design Tokens ---------- */
+:root {
+  --gold: #C9A962;
+  --gold-light: #E8D5A3;
+  --gold-dark: #9A7B3C;
+  --dark: #0A0A0A;
+  --dark-card: #141414;
+  --dark-surface: #1A1A1A;
+  --dark-border: #2A2A2A;
+  --cream: #FAF5EB;
+  --cream-muted: #C8C0B0;
+  --white: #FFFFFF;
+
+  --font-heading: var(--font-playfair), "Georgia", serif;
+  --font-body: var(--font-inter), "Helvetica Neue", sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-fast: 200ms var(--ease-out-expo);
+  --transition-base: 400ms var(--ease-out-expo);
+  --transition-slow: 800ms var(--ease-out-expo);
+}
+
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--dark);
+  color: var(--cream);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--white);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--gold);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+/* ---------- Custom Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dark);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* ---------- Utility: Glassmorphism ---------- */
+.glass {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(201, 169, 98, 0.12);
+}
+
+.glass-strong {
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(201, 169, 98, 0.2);
+}
+
+/* ---------- Utility: Gold Glow ---------- */
+.glow {
+  box-shadow: 0 0 30px rgba(201, 169, 98, 0.15),
+              0 0 60px rgba(201, 169, 98, 0.05);
+}
+
+.glow-text {
+  text-shadow: 0 0 40px rgba(201, 169, 98, 0.3);
+}
+
+/* ---------- Utility: Buttons ---------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 36px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: var(--dark);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201, 169, 98, 0.35);
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-primary span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  border: 1.5px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.btn-outline:hover {
+  background: var(--gold);
+  color: var(--dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201, 169, 98, 0.25);
+}
+
+/* ---------- Utility: Section ---------- */
+.section {
+  padding: 100px 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-label {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  padding: 6px 16px;
+  border: 1px solid rgba(201, 169, 98, 0.3);
+  border-radius: var(--radius-full);
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 20px;
+}
+
+.section-subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--cream-muted);
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+/* ---------- Utility: Cards ---------- */
+.card {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  border-color: rgba(201, 169, 98, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4),
+              0 0 30px rgba(201, 169, 98, 0.08);
+}
+
+/* ---------- Utility: Dividers ---------- */
+.gold-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 24px 0;
+}
+
+.gold-divider-center {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 24px auto;
+}
+
+/* ---------- Utility: Responsive ---------- */
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 20px;
+  }
+}

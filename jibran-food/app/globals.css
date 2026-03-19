@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  --background: #e8f1f8;
+  --foreground: #101827;
+  --muted: #4b5563;
+  --midnight: #13233c;
+  --steel: #27496d;
+  --forest: #1f5a43;
+  --burnt: #8a4b2f;
+  --champagne: #d4af37;
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --card-border: rgba(255, 255, 255, 0.65);
+  --shadow-soft: 0 30px 60px rgba(16, 24, 39, 0.06);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-midnight: var(--midnight);
+  --color-steel: var(--steel);
+  --color-forest: var(--forest);
+  --color-burnt: var(--burnt);
+  --color-champagne: var(--champagne);
+  --font-sans: var(--font-manrope);
+  --font-serif: var(--font-cormorant);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 5% 15%, rgba(212, 175, 55, 0.12), transparent 40%),
+    radial-gradient(circle at 100% 10%, rgba(39, 73, 109, 0.1), transparent 40%),
+    linear-gradient(180deg, #edf4fa 0%, #d8e8f4 60%, #c9ddee 100%);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif), Georgia, serif;
+  letter-spacing: 0.03em;
+}
+
+.section-shell {
+  padding-top: clamp(6rem, 10vw, 10rem);
+  padding-bottom: clamp(6rem, 10vw, 10rem);
+}
+
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  border-radius: 1.5rem;
+}
+
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid transparent;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.75), transparent 40%, rgba(255, 255, 255, 0.6)) border-box;
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+.tracking-lux {
+  letter-spacing: 0.1em;
+}
+
+.muted-copy {
+  color: color-mix(in oklab, var(--foreground) 60%, white 20%);
+}
+
+.btn-premium {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.35rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform 250ms ease, box-shadow 250ms ease, background-color 250ms ease;
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(31, 90, 67, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .btn-premium {
+    transition: none;
+  }
+}
